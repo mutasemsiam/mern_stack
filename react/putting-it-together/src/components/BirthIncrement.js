@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './BirthIncrement.module.css';
 
 
 class BirthIncrement extends Component{
@@ -23,7 +24,7 @@ class BirthIncrement extends Component{
             <h1>{firstName}, {lastName}</h1>
             <p>Age: {this.state.incrementedAge}</p>
             <p>Hair color: {hairColor}</p>
-            <button onClick={this.change}>Birthday button for {firstName} {lastName}</button>
+            <button className={ styles.btn } onClick={this.change}>Birthday button for {firstName} {lastName}</button>
         </fieldset>
         );
     }
