@@ -5,10 +5,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const UserForm = (props) => {
     const [firstName, setFirstName] = useState("");
+    const [firstNameError, setFirstNameError] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
+
+    const validateName = (e) => {
+        setFirstName(e.target.value);
+        if(e.target.value.length < 1) {
+            setFirstNameError("First name is required!");
+        } else if(e.target.value.length < 3) {
+            setFirstNameError("First name must be 3 characters or longer!");
+        } else {
+            setFirstNameError("");
+        }
+    }
 
     const createUser = (e) => {
         e.preventDefault();
@@ -21,8 +33,13 @@ const UserForm = (props) => {
         <div>
             <form onSubmit={createUser}>
                 <div>
-                    <label className='text-danger'>First Name: </label>
-                    <input type="text" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
+                    <label>First Name: </label>
+                    <input type="text" onChange={validateName} value={firstName} />
+                    {
+                    firstNameError ?
+                    <p className='text-danger'>{ firstNameError }</p> :
+                    ''
+                }
                 </div>
                 <div>
                     <label>Last Name: </label>
