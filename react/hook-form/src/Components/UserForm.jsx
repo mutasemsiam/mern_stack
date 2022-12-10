@@ -60,7 +60,12 @@ const UserForm = (props) => {
                 <input type="submit" value="Create User" />
 
             </form>
-            <h3>First name: {firstName}</h3>
+            {/* <h3>First name: {firstName}</h3> */}
+            {
+                    !firstNameError ?
+                    <h3>First name: { firstName }</h3> :
+                    ''
+                }
             <h3>Last name: {lastName}</h3>
             <h3>Email: {email}</h3>
             <h3>Password: {password}</h3>
