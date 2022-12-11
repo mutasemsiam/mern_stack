@@ -12,7 +12,7 @@ const UserForm = (props) => {
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [ConfirmPassword, setConfirmPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [confirmPasswordError, setConfirmPasswordError] = useState("");
     const [hasBeenSubmitted, setHasBeenSubmitted] = useState(false);
 
@@ -36,7 +36,7 @@ const UserForm = (props) => {
     }
     const validateEmail = (e) => {
         setEmail(e.target.value);
-        if(e.target.value.length < 2) {
+        if(e.target.value.length < 5) {
             setEmailError("Email must be at least 2 characters!");
         } 
         else {
@@ -55,13 +55,14 @@ const UserForm = (props) => {
     const validateCP = (e) => {
         setConfirmPassword(e.target.value);
         console.log(password);
-        if(e.target.value != {password}) {
-            setConfirmPasswordError("Email must match!");
+        if(e.target.value != password) {
+            setConfirmPasswordError("Password must match!");
             // console.log(e.target.value);
-            if(e.target.value=== password){
+            
+            }
+            else {
                 // console.log("True");
                 setConfirmPasswordError("");
-            }
         } 
     
     }
@@ -75,7 +76,7 @@ const UserForm = (props) => {
     };
 
     return (
-        <div>
+       
             <form onSubmit={createUser}>
             {
                     hasBeenSubmitted ?
@@ -120,7 +121,7 @@ const UserForm = (props) => {
                 </div>
                 <div>
                     <label>Confirm Password: </label>
-                    <input type="text" onChange={validateCP} value={ConfirmPassword} />
+                    <input type="text" onChange={validateCP} value={confirmPassword} />
                     {
                     confirmPasswordError ?
                     <p className='text-danger'>{ confirmPasswordError }</p> :
@@ -131,7 +132,7 @@ const UserForm = (props) => {
 
             </form>
            
-        </div>
+        
     );
 };
 
