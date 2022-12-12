@@ -24,7 +24,7 @@ const MyTabs = (props) => {
                         setContent(item.content)
                     }
                     }>{item.title}
-                    <h1 onClick={showTab}></h1></button>)}
+                    </button>)}
             </div>
             <div style={{ width: '400px', height: '200px', border: '2px solid black', margin: '0 auto',
              fontSize: '2em' }}>
