@@ -3,13 +3,13 @@ import React, { useEffect, useState } from 'react';
 
 export default () => {
 
-    const [people, setPeople] = useState([]);
+    const [pokemon, setPokemon] = useState([]);
     const [done, setDone] = useState(false);
 
     useEffect(() => {
         fetch('https://pokeapi.co/api/v2/pokemon/')
             .then(response => response.json())
-            .then(response => { setPeople(response.results); })
+            .then(response => { setPokemon(response.results); })
             
     }, []);
 
@@ -23,8 +23,8 @@ export default () => {
 
             {done ?
                 <>
-                    {people.length > 0 && people.map((person, index) => {
-                        return (<div key={index}>{person.name}</div>)
+                    {pokemon.length > 0 && pokemon.map((poke, indx) => {
+                        return (<div key={indx}>{poke.name}</div>)
                     })}
                 </> : null
             }
