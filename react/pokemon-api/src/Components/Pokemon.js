@@ -24,7 +24,7 @@ export default () => {
             {done ?
                 <>
                     {pokemon.length > 0 && pokemon.map((poke, indx) => {
-                        return (<div key={indx}>{poke.name}</div>)
+                        return (<ul> <li key={indx} style={{color:'grey'}}>{poke.name}</li> </ul>)
                     })}
                 </> : null
             }
