@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-export default () => {
+export default (props) => {
     //keep track of what is being typed via useState hook
     const [firstName, setFirstName] = useState(""); 
     const [lastName, setLastName] = useState("");
-    const [submitted, setSubmitted] = useState(false);
+    const { addToDom } = props;
+
     //handler when the form is submitted
     
     const onSubmitHandler = e => {
@@ -15,9 +16,9 @@ export default () => {
             firstName,
             lastName
         })
-            .then(res=>console.log(res))
-            .catch(err=>console.log(err))
-        setSubmitted(true);
+            .then(res=>{addToDom(firstName, lastName);console.log("yessss")})
+            .catch(err=>{console.log(err); console.log('heyyy')})
+    
     }
 
     //onChange to update firstName and lastName

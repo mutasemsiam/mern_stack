@@ -18,6 +18,7 @@ const Main = (props) => {
             .then(res=>{
                 setPeople(res.data.persons);
                 setLoaded(true);
+                console.log("tryy")
             })
             .catch(err => console.error(err));
     },[]);
@@ -26,10 +27,18 @@ const Main = (props) => {
         setPeople(people.filter(person => person._id != personId));
     }
 
+    const addToDom = (fName, lName) => {
+        const newPerson = {
+            firstName : fName,
+            lastName : lName
+        }
+        setPeople([...people, newPerson]);
+    }
+
     return (
         <div >
             <h2>Message from the backend: {message}</h2>
-            <PersonForm/>
+            <PersonForm addToDom={addToDom}/>
             <hr/>
             {loaded && <PersonList people={people} removeFromDom={removeFromDom}/>}
         </div>

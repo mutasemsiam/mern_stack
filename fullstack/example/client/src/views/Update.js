@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { navigate } from '@reach/router';
 // import { useParams } from "react-router-dom";
     
 const Update = (props) => {
@@ -23,6 +24,7 @@ const Update = (props) => {
         })
             .then(res => console.log(res))
             .catch(err => console.error(err));
+        navigate('/')
     }
     
     return (
