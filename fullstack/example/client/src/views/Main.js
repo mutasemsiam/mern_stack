@@ -27,11 +27,8 @@ const Main = (props) => {
         setPeople(people.filter(person => person._id != personId));
     }
 
-    const addToDom = (fName, lName) => {
-        const newPerson = {
-            firstName : fName,
-            lastName : lName
-        }
+    const addToDom = newPerson => {
+      
         setPeople([...people, newPerson]);
     }
 

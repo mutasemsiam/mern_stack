@@ -16,7 +16,7 @@ export default (props) => {
             firstName,
             lastName
         })
-            .then(res=>{addToDom(firstName, lastName);console.log("yessss")})
+            .then(res=>{addToDom(res.data.person);console.log("yessss")})
             .catch(err=>{console.log(err); console.log('heyyy')})
     
     }
