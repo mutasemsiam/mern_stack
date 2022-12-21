@@ -15,6 +15,13 @@ const Detail = (props) => {
         const x = product._id;
         navigate(`/${x}/edit`);
     }
+    const deleteProduct = (productId) => {
+        axios.delete('http://localhost:8000/api/product/' + productId)
+            .then(res => {
+                navigate('/')
+            })
+            .catch(err => console.error(err));
+    }
     
     return (
         <div>
@@ -22,6 +29,7 @@ const Detail = (props) => {
             <p>Price: {product.price}</p>
             <p>Description: {product.desc}</p>
             <input onClick={doNavigate} type="button" value="Edit"/>
+            <input onClick={(e)=>deleteProduct(product._id)} type="button" value="Delete"/>
         </div>
     )
 }

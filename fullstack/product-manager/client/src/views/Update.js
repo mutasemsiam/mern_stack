@@ -27,8 +27,8 @@ const Update = (props) => {
         })
             .then(res => console.log(res))
             .catch(err => console.error(err));
-        navigate('/')
-        // navigate(`/${props.id}`)
+        // navigate('/')
+        navigate(`/${props.id}`)
     }
     
     return (
