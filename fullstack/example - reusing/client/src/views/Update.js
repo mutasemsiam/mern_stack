@@ -20,6 +20,7 @@ const Update = (props) => {
     const updatePerson = person => {
         axios.put('http://localhost:8000/api/people/' + props.id, person)
             .then(res => console.log(res));
+            navigate(`/${props.id}`);
     }
     
     return (
