@@ -4,23 +4,24 @@ import axios from 'axios';
 import DeleteButton from './DeleteButton';
     
 const PersonList = (props) => {
-    const [people, setPeople] = useState([]);
+    const [peopleList, setPeopleList] = useState([]);
    
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/people')
-            .then(res => setPeople(res.data.persons));
-    }, [])
+    // useEffect(() => {
+    //     axios.get('http://localhost:8000/api/people')
+    //         .then(res => setPeople(res.data.persons));
+    // }, [])
     
     const removeFromDom = personId => {
-        setPeople(people.filter(person => person._id != personId))
+        setPeopleList(peopleList.filter(person => person._id != personId))
     }
     
     useEffect( ()=>{
-        setPeople(props.people);
+        setPeopleList(props.people);
     }, [props.people])
+    
     return (
         <div>
-            {people.map((person, idx) => {
+            {peopleList.map((person, idx) => {
                 return (
                     <p key={idx}>
                         <Link to={"/" + person._id}>
