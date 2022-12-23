@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
-import {
-    Paper,
-    FormControl,
-    InputLabel,
-    OutlinedInput,
-    Button
-} from '@material-ui/core';
+import {Paper, Button} from '@material-ui/core';
 export default props => {
     const { initialFirstName, initialLastName, onSubmitProp } = props;
     const [firstName, setFirstName] = useState(initialFirstName);
     const [lastName, setLastName] = useState(initialLastName);
+    
     const onSubmitHandler = e => {
         e.preventDefault();
         onSubmitProp({ firstName, lastName });
@@ -18,9 +13,6 @@ export default props => {
 
     return (
         <>
-            <Paper elevation={3}>
-                <h1>Welcome to the form</h1>
-            </Paper>
             <Paper elevation={3}>
                 <form onSubmit={onSubmitHandler}>
                     <p>
@@ -39,6 +31,7 @@ export default props => {
                             onChange={(e) => { setLastName(e.target.value) }} />
                     </p>
                  
+                    {props.formErrors.map((err, index) => <p key={index}>{err}</p>)}
 
                     {/* <input type="submit" /> */}
                     <Button type="submit" variant="contained" color="primary">

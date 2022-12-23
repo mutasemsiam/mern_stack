@@ -25,7 +25,7 @@ module.exports.createPerson = (request, response) => {
     })
 
         .then(newPerson => response.json({person: newPerson}))
-        .catch(err => response.json(err));
+        .catch(err => response.status(400).json(err))
 }
 
 module.exports.findAllPersons = (request, response) => {
@@ -41,9 +41,10 @@ module.exports.findOnePerson = (request, response) => {
 }
 
 module.exports.updatePerson = (request, response) => {
-    Person.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
-        .then(updatedPerson => response.json(updatedPerson))
-        .catch(err => response.json(err))
+    Person.findOneAndUpdate({_id: request.params.id}, request.body, {new:true, runValidators: true})
+        .then(updatedPerson => response.json({person: updatedPerson}))
+        .catch(err => response.status(400).json(err))
+  
 }
 
 module.exports.deletePerson = (request, response) => {

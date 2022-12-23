@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import {Button} from '@material-ui/core';
     
 export default props => {
     
@@ -13,9 +14,11 @@ export default props => {
     }
     
     return (
-        <button onClick={deletePerson}>
-            Delete
-        </button>
+        // <button onClick={deletePerson}>Delete
+        // </button>
+            <Button onClick={deletePerson}  variant="contained" color="secondary">Delete</Button>
+            
+        
     )
 }
 

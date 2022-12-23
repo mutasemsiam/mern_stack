@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from '@reach/router';
-import axios from 'axios';
+// import axios from 'axios';
 import DeleteButton from './DeleteButton';
+import {Button} from '@material-ui/core';
     
 const PersonList = (props) => {
     const [peopleList, setPeopleList] = useState([]);
@@ -29,7 +30,8 @@ const PersonList = (props) => {
                         </Link>
                         |
                         <Link to={"/" + person._id + "/edit"}>
-                            Edit
+                        <Button type="submit" variant="contained" color="primary">Edit</Button>
+                            
                         </Link> 
                         |
                        <DeleteButton personId={person._id} successCallback={()=>removeFromDom(person._id)}/>
