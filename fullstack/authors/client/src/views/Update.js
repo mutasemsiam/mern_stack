@@ -47,9 +47,9 @@ const Update = (props) => {
                         formErrors={errors}
                        
                     />
-                    <Paper elevation={80}>
+                    
                     <DeleteButton authorId={author._id} successCallback={() => navigate("/")} />
-                    </Paper>
+                   
                 </>
             )}
         </div>
