@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import AuthorForm from '../components/AuthorForm';
 import DeleteButton from '../components/DeleteButton';
-import { navigate } from '@reach/router';
+import { Link, navigate } from '@reach/router';
+import {Paper} from '@material-ui/core';
 const Update = (props) => {
 
 
@@ -36,15 +37,19 @@ const Update = (props) => {
 
     return (
         <div>
-            <h1>Update Author</h1>
+            <Link to='/'>Home</Link>
+            <p>Edit this Author</p>
             {loaded && (
                 <>
                     <AuthorForm
                         onSubmitProp={updateAuthor}
                         initialName={author.name}
                         formErrors={errors}
+                       
                     />
+                    <Paper elevation={80}>
                     <DeleteButton authorId={author._id} successCallback={() => navigate("/")} />
+                    </Paper>
                 </>
             )}
         </div>
