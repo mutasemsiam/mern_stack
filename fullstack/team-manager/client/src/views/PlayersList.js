@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import axios from 'axios';
 import Nav from '../components/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';   
+import DeleteButton from '../components/DeleteButton';
 
 const PlayersList = () => {
 
@@ -14,17 +15,10 @@ const PlayersList = () => {
                 setPlayer(res.data)
             })
     }, []);
-
     
-    const deletePlayer = playerId =>{
-        axios.delete('http://localhost:8000/api/player/' + playerId)
-        .then(res => {
-            console.log(res);
-            setPlayer(player.filter(player=> player._id != playerId))
-        })
-        .catch(err => console.error(err));
-}
-    
+    const removeFromDom = playerId =>{
+        setPlayer(player.filter(player=> player._id != playerId))
+    }
 
   return (
     <div>
@@ -37,24 +31,23 @@ const PlayersList = () => {
     <th>Action</th>
   </tr>
   </thead>
+  <tbody>
       {player.map((player, indx) =>{
         return (
-            <tbody>
+            
             <tr key={indx}>
                 
                <td><Link to={`/players/${player._id}`}>{player.name}</Link></td> 
                 
                <td> {player.prefPosition}</td> 
                 
-               <td> <button onClick={(e)=>{deletePlayer(player._id)}}>Delete</button></td> 
+               <td> <DeleteButton playerId={player._id} deleteThisPlayer={removeFromDom}/></td> 
             </tr>
-            </tbody>
+            
         )
       })}
-      </table>
-  
-
-      
+      </tbody>
+      </table> 
       
     </div>
   )
