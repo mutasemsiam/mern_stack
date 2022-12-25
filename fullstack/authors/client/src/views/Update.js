@@ -3,7 +3,6 @@ import axios from 'axios';
 import AuthorForm from '../components/AuthorForm';
 import DeleteButton from '../components/DeleteButton';
 import { Link, navigate } from '@reach/router';
-import {Paper} from '@material-ui/core';
 const Update = (props) => {
 
 

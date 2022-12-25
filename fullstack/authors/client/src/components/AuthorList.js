@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from '@reach/router';
 import DeleteButton from './DeleteButton';
 import { Button } from '@material-ui/core';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AuthorList = (props) => {
     const [authorList, setAuthorList] = useState([]);
@@ -45,10 +44,6 @@ const AuthorList = (props) => {
 }
 
 export default AuthorList;
-
-
-
-// Mapping withoud bootstrap:
 
 
 
