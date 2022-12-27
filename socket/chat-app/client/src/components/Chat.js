@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ScrollToBottom from 'react-scroll-to-bottom';
 
-const Chat = ({socket, name, room}) => {
+const Chat = ({socket, name, room, welcome}) => {
     const [currentMsg, setCurrentMsg] = useState("");
     const [msgList, setMsgList] = useState([]);
 
@@ -26,9 +26,23 @@ const Chat = ({socket, name, room}) => {
         socket.on("receive_msg", (data) =>{
         setMsgList((list)=>[...list, data]);
         console.log(data);
+        
 
         })
     }, [socket])
+
+    useEffect(()=>{
+        socket.on("welcome_msg", (data)=>{
+        console.log(data.content);
+        setMsgList((list)=>[...list, data]);
+    })
+  },[socket])
+
+    useEffect(() =>{
+        
+        setMsgList((list)=>[...list, welcome]);
+        
+    }, [welcome])
   return (
     <div className='chat-window'>
       <div className='chat-header'>
@@ -37,9 +51,11 @@ const Chat = ({socket, name, room}) => {
       <div className='chat-body'>
         <ScrollToBottom className='message-container'>
         {msgList.map((msg, indx)=>{
-            return <div className='message' key={indx} id={name===msg.author? "you" : "other"}>
+            return <div className='message' key={indx} id={name===msg.author? "you" : "other"} style={{
+                justifyContent:msg.justify
+            }}>
                 <div>
-                    <div className='message-content'>
+                    <div className='message-content' style={{backgroundColor:msg.color}}>
                         <p>{msg.content}</p>
                     </div>
                     <div className='message-meta'>
