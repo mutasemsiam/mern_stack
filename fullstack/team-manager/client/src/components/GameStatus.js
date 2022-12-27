@@ -1,25 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import axios from 'axios';
 const GameStatus = (props) => {
-  const [players, setPlayers] = useState([]);
-//   const [player, setPlayer] = useState([]);
-
-  const [loaded, setLoaded] = useState(false);
-//   const [click,setClick] = useState(0)
-//   const [update,setUpdate] = useState(0)
-
-    useEffect(() => {
-        axios.get("http://localhost:8000/api/player")
-            .then(res => {setPlayers(res.data); console.log("yeeea")});
-            setLoaded(true);
-
-    }, [players])
-  //   useEffect(() => {
-  //     axios.get('http://localhost:8000/api/Team/' + update)
-  //         .then(res => {
-  //             setLoaded(true);
-  //         })
-  // }, []);
 
     const style1 ={
         textAligncenter :'center',
@@ -30,9 +11,9 @@ const GameStatus = (props) => {
       console.log(id)
       axios.put('http://localhost:8000/api/player/' + id,props.id==1?{"status.game1":num}:props.id==2?{"status.game2":num}:{"status.game3":num})
       .then(res=>{
-        console.log(res)
+        console.log(res); axios.get("http://localhost:8000/api/player").then(res=>props.addToDom(res.data));
       })
-        // setPlayers(players.status.game1=1)
+
   }
   
   return (
@@ -45,7 +26,7 @@ const GameStatus = (props) => {
                         </tr>
                         </thead>
                         <tbody>
-                    {loaded && players.map((player, idx) => {
+                    {props.players.map((player, idx) => {
                         return (
                     
                         
