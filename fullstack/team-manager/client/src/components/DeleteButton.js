@@ -6,7 +6,7 @@ const DeleteButton = (props) => {
 
     const deletePlayer = playerId =>{
         let answer = window.confirm("Delete?");
-        if (window.confirm("Delete?")){
+        if (answer){
         axios.delete('http://localhost:8000/api/player/' + playerId)
         .then(res => {
             console.log(res);
