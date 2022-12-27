@@ -2,6 +2,7 @@ import './App.css';
 import CreatePlayer from './views/CreatePlayer';
 import { Router } from '@reach/router'
 import PlayersList from './views/PlayersList';
+import ManageStatus from './views/ManageStatus';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Router>
       <CreatePlayer path="/players/addplayer"/>
       <PlayersList path="/players/list"/>
+      <ManageStatus path="/status/game/:id"/>
       </Router>
      
     </div>

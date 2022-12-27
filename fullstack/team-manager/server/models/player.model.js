@@ -7,6 +7,8 @@ const PlayerSchema = new mongoose.Schema({
     },
     prefPosition: {
         type: String,
-    }
+    },
+    status: 
+    { game1: Number, game2: Number ,game3: Number}
 }, { timestamps: true });
 module.exports = mongoose.model('Player', PlayerSchema);

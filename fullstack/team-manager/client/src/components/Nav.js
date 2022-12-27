@@ -8,6 +8,8 @@ const Nav = () => {
         <Link to="/players/list">List</Link>
         |
         <Link to="/players/addplayer">Add Player</Link>
+        |
+        <Link to="/status/game/1">Manage Player Status</Link>
       </h3>
     </div>
   )

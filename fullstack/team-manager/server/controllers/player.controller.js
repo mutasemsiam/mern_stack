@@ -3,10 +3,11 @@ const Player = require("../models/player.model");
 
 module.exports.createPlayer = (request, response) => {
 
-    const { name, prefPosition } = request.body;  //This is destructuring => firstName = request.body.firstName 
+    const { name, prefPosition, status } = request.body;  //This is destructuring => firstName = request.body.firstName 
     Player.create({
         name,
-        prefPosition
+        prefPosition,
+        status
     })
 
         .then(newPlayer => response.json(newPlayer))

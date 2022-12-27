@@ -5,10 +5,11 @@ const PlayersForm = (props) => {
     const {initialName, initialPrefPosition, onSubmitProp} = props;
     const [name, setName] = useState(initialName);
     const [prefPosition, setPrefPosition] = useState(initialPrefPosition);
+    const [status, setStatus] = useState({game1:0,game2:0,game3:0}); 
 
     const onSubmitHandler = e =>{
         e.preventDefault();
-        onSubmitProp({name, prefPosition});
+        onSubmitProp({name, prefPosition, status});
 
     }
 
